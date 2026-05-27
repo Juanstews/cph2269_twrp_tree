@@ -6,9 +6,9 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/twrp.mk
+    $(LOCAL_DIR)/twrp_cph2269.mk
 
 COMMON_LUNCH_CHOICES := \
-    twrp-user \
-    twrp-userdebug \
-    twrp-eng
+    twrp_cph2269-user \
+    twrp_cph2269-userdebug \
+    twrp_cph2269-eng
