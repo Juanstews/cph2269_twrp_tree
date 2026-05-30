@@ -1,4 +1,3 @@
-#
 # Copyright (C) 2026 The Android Open Source Project
 # Copyright (C) 2026 SebaUbuntu's TWRP device tree generator
 #
@@ -80,9 +79,6 @@ BOARD_INCLUDE_RECOVERY_DTBO := true
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 
-# Security patch level
-VENDOR_SECURITY_PATCH := 2021-08-01
-
 # Verified Boot
 BOARD_AVB_ENABLE := true
 BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flags 3
@@ -96,9 +92,41 @@ PLATFORM_SECURITY_PATCH := 2099-12-31
 VENDOR_SECURITY_PATCH := 2099-12-31
 PLATFORM_VERSION := 16.1.0
 
-# TWRP Configuration
+# TWRP / Common Configuration
 TW_THEME := portrait_hdpi
 TW_EXTRA_LANGUAGES := true
 TW_SCREEN_BLANK_ON_BOOT := true
 TW_INPUT_BLACKLIST := "hbtp_vm"
 TW_USE_TOOLBOX := true
+
+# ====================================================================
+# ORANGEFOX CONFIGURATIONS & MOUNT/SIDELOAD FIXES
+# ====================================================================
+
+# Maintainer Info
+OF_MAINTAINER := Juan
+
+# Fix ADB Sideload Freeze at Storage Mount Issues
+TW_EXCLUDE_DEFAULT_USB_INIT := true
+TARGET_USES_MKE2FS := true
+RECOVERY_SDCARD_ON_DATA := true
+BOARD_HAS_NO_REAL_SDCARD := false
+
+# Android 11+ FBE Decryption Skip ( recovery mount)
+OF_SKIP_FBE_DECRYPTION := 1
+OF_SKIP_FBE_DECRYPTION_SDKVERSION := 30
+OF_FIX_DECRYPTION_ON_DATA_MEDIA := 1
+
+# Display / Notch Layout for Oppo A16 Screen (720x1600)
+OF_SCREEN_H := 1600
+OF_STATUS_H := 80
+OF_STATUS_INDENT_LEFT := 48
+OF_STATUS_INDENT_RIGHT := 48
+OF_ALLOW_DISABLE_NAVBAR := 0
+OF_USE_GREEN_LED := 0
+
+# OrangeFox Flags
+FOX_REPLACE_TOOLBOX := 1
+FOX_USE_TWRP_RECOVERY_IMAGE_BUILDER := 1
+OF_DEVICE_WITHOUT_PERSIST := 0
+OF_REPORT_HARMLESS_MOUNT_ISSUES := 0
